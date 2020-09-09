@@ -11,6 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.myapplication.MainActivity
 import com.example.myapplication.databinding.ButtonBinding
 import com.example.myapplication.databinding.InputBinding
 import com.example.myapplication.databinding.MainFragmentBinding
@@ -65,7 +66,11 @@ class MainFragment : Fragment() {
                         }
                     }),
                     FooView.Text("Baz"),
-                    FooView.Button("Submit"),
+                    FooView.Button("Other screen (but same)", object : OnClickFoo {
+                        override fun onClick(view: View) {
+                            startActivity(Intent(view.context, MainActivity::class.java))
+                        }
+                    }),
                     FooView.Input("Bar"),
                     FooView.Text("Bar"),
                     FooView.Button("Submit"),
